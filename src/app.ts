@@ -1,9 +1,12 @@
 import express, {Request, Response, Application, NextFunction} from 'express';
+import { compileRouter } from './routes/compile_routs';
 
+const PORT = process.env.PORT || 5000; 
 const app:Application = express(); 
 
-app.get('/', (req:Request,res:Response, next:NextFunction)=>{
-    res.send("Hello");
-});
+app.use(express.static('build'));
+app.use('/compile', compileRouter);
 
-app.listen(5000, ()=>console.log("Server running on http://localhost:5000/"));
+
+
+app.listen(PORT, ()=>console.log("Server running on http://localhost:5000/"));
