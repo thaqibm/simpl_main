@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "simpl_interp": "^1.0.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
