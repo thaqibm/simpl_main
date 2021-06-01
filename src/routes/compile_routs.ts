@@ -1,5 +1,5 @@
 import express, {Router, Request, Response, Application, NextFunction}  from 'express'; 
-import {interp} from 'simpl_interp';
+import {interp} from '../interp/simpl_interp/main';
 export const compileRouter : Router = express.Router(); 
 
 compileRouter.get('/', (req:Request,res:Response,next:NextFunction) =>{
@@ -7,10 +7,18 @@ compileRouter.get('/', (req:Request,res:Response,next:NextFunction) =>{
 });
 
 compileRouter.post('/', (req: Request, res:Response, next: NextFunction) =>{
-    console.log(req.body);
-    const out = interp(req.body['code'])
-    .then(output => {
-        res.send({"output": output, "error": null});
+    const code = req.body['code'];
+    console.log(code);
+    interp(code)
+    .then(out =>{
+        console.log(out);
+        res.json({out});
+        res.send();
     })
-    .catch(e => res.send({"output": null, "error": e}));
+    .catch(e => {
+        console.log(e);
+        res.json({error: e});
+        res.send();
+    })
+
 });

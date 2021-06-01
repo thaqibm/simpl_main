@@ -1,0 +1,6 @@
+[submodule "simpl_interp"]
+	path = src/interp/simpl_interp
+	url = https://github.com/thaqib0437/simpl_interp.git
+[submodule "src/interp/simpl_interp"]
+	path = src/interp/simpl_interp
+	url = https://github.com/thaqib0437/simpl_interp.git
